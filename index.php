@@ -1,2 +1,2 @@
 <?php
-echo "Hello LINE BOT";
+echo "หวัดดีประชาชน(hmph)(hmph)(hmph)(cony kiss)";
