@@ -79,10 +79,19 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
+			
+			
+			//http://www.html5videoplayer.net/videos/toystory.mp4
+			//video
+			
+			$video = 'http://www.html5videoplayer.net/videos/toystory.mp4';
+			
 			// Build message to reply back
 			$messages = [
-				'type' => 'text',
-				'text' => $text
+				//'type' => 'text',
+				//'text' => $text
+				'type' => 'video',
+				'text' => $video
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
