@@ -1,7 +1,18 @@
 <?php
+
+include_once('LINEBot.php');
+
 $proxy = 'velodrome.usefixie.com:80';
 $proxyauth = 'fixie:bfhX5Zm0ZC3iu84';
 $access_token = 'r0AE+qmwBHCFStfXuZIaO8HzNHnF2eJ3O4zOQIzzAqJ1nmEV1XJXnmbP++ei7yRQBujrR48im+iuMUD7kGyOagWaDhQwq2TIuOqR2UIW+L6EoSHC2VGxAFnm4syPBpDhWitZM0FSe249Z1EN3xxqMgdB04t89/1O/w1cDnyilFU=';
+
+use LINE-BOT-PHP-Starter/LINEBot/;
+use LINE-BOT-PHP-Starter/LINEBot/HTTPClient;
+
+
+
+
+
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -55,7 +66,10 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$text = "แชร์ครั้งล่าสุด : " . $datetime [0] . " " .$datetime [1] . " " . $datetime [2] . " " . $datetime [3] . " " . date('h:i:s', $endTime) .  "\r\n" .
+			
+			$uprofile = LINEBot->getProfile($event['source']['userId']);
+			
+			$text = $uprofile . "\r\n" . "แชร์ครั้งล่าสุด : " . $datetime [0] . " " .$datetime [1] . " " . $datetime [2] . " " . $datetime [3] . " " . date('h:i:s', $endTime) .  "\r\n" .
                                 "ยอด ETH : " . $data1["wallet_balance"] . " ETH" . "\r\n" .
                                 "คิดเป็นเงินบาท : " . $total . " THB" . "\r\n" .
                                 "1 ETH เท่ากับ : " . $data["THB"] . " THB" . "\r\n" .
