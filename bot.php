@@ -87,7 +87,7 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => $text ,
 				'type' => 'video',
-				'text' => $video
+				'video' => $video
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
