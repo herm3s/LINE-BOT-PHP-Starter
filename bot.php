@@ -7,6 +7,31 @@ $access_token = 'r0AE+qmwBHCFStfXuZIaO8HzNHnF2eJ3O4zOQIzzAqJ1nmEV1XJXnmbP++ei7yR
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
+
+
+$url="https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=BTC,USD,THB";
+
+$ch = curl_init();
+// Disable SSL verification
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+// Will return the response, if false it print the response
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// Set the url
+curl_setopt($ch, CURLOPT_URL,$url);
+// Execute
+$result=curl_exec($ch);
+// Closing
+curl_close($ch);
+
+// Will dump a beauty json :3
+//var_dump(json_decode($result, true));
+
+$data = json_decode($result,true);
+
+
+
+
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -14,7 +39,7 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$text = $event['message']['text'];
+			$text = $event['message']['text'] && $data["THB"];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
