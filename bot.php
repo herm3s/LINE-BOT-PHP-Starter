@@ -80,11 +80,7 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			
-			
-			//http://www.html5videoplayer.net/videos/toystory.mp4
-			//video
-			
-			$video = 'https://www.quirksmode.org/html5/videos/big_buck_bunny.mp4';
+			$video = "https://www.quirksmode.org/html5/videos/big_buck_bunny.mp4";
 			
 			// Build message to reply back
 			$messages = [
