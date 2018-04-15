@@ -16,4 +16,4 @@ curl_close($ch);
 // Will dump a beauty json :3
 //var_dump(json_decode($result, true));
 $data = json_decode($result,true);
-echo  "THB :" ; echo $data["THB"];
+echo  "THB :" . $data["THB"];
