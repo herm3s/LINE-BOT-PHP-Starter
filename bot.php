@@ -69,7 +69,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			
-			$uprofile = $bot->getProfile($event['source']['userId']);
+			$uprofile = $bot->getProfile('U127bc358c8b192a31d4be78f8a6d902a');
 			
 			$text = $uprofile . "\r\n" . "แชร์ครั้งล่าสุด : " . $datetime [0] . " " .$datetime [1] . " " . $datetime [2] . " " . $datetime [3] . " " . date('h:i:s', $endTime) .  "\r\n" .
                                 "ยอด ETH : " . $data1["wallet_balance"] . " ETH" . "\r\n" .
