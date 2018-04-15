@@ -9,26 +9,42 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 
-$url="https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=BTC,USD,THB";
+//header('Content-Type: text/html; charset=utf-8');
 
-$ch = curl_init();
+
+$url1="http://dwarfpool.com/eth/api?wallet=0xE058B32A21b8C3B5BBfba621B4c94eC834e4BA9e&email=jason_bomb@me.com";
+
+$ch1 = curl_init();
 // Disable SSL verification
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
 // Will return the response, if false it print the response
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
 // Set the url
-curl_setopt($ch, CURLOPT_URL,$url);
+curl_setopt($ch1, CURLOPT_URL,$url1);
 // Execute
-$result=curl_exec($ch);
+$result1=curl_exec($ch1);
 // Closing
+curl_close($ch1);
+$data1 = json_decode($result1,true);
+
+$s_date = $data1["last_share_date"];
+$datetime = explode(" ", $s_date);
+$selectedTime = $datetime [4];
+$endTime = strtotime("+420 minutes", strtotime($selectedTime));
+
+$url="https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=BTC,USD,THB";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_URL,$url);
+$result=curl_exec($ch);
 curl_close($ch);
-
-// Will dump a beauty json :3
-//var_dump(json_decode($result, true));
-
 $data = json_decode($result,true);
+//echo  "THB :" ; echo $data["THB"];
 
-
+$balance = $data1["wallet_balance"];
+$thb_rate =  +$data["THB"] ;
+$total = +$balance * +$thb_rate;
 
 
 
@@ -39,7 +55,14 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$text = $event['message']['text'] . "1 ETH to THB :"  . $data["THB"];
+			$text = "แชร์ครั้งล่าสุด : " . $datetime [0] . " " .$datetime [1] . " " . $datetime [2] . " " . $datetime [3] . " " . date('h:i:s', $endTime) .  "\r\n" .
+                                "ยอด ETH : " . $data1["wallet_balance"] . " ETH" . "\r\n" .
+                                "คิดเป็นเงินบาท : " . $total . " THB" . "\r\n" .
+                                "1 ETH เท่ากับ : " . $data["THB"] . " THB" . "\r\n" .
+                                "ยอดขุดใน 24 ชั่วโมง : " . $data1["earning_24_hours"] . " ETH" . "\r\n" .
+                                "Error Status : " . $data1["error_code"] . "\r\n" .
+                                "ยอดที่ยังไม่ยืนยัน : " . $data1["immature_earning"] . " ETH" . "\r\n";
+
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
