@@ -61,7 +61,7 @@ if (!is_null($events['events'])) {
                                 "1 ETH เท่ากับ : " . $data["THB"] . " THB" . "\r\n" .
                                 "ยอดขุดใน 24 ชั่วโมง : " . $data1["earning_24_hours"] . " ETH" . "\r\n" .
                                 "Error Status : " . $data1["error_code"] . "\r\n" .
-                                "ยอดที่ยังไม่ยืนยัน : " . $data1["immature_earning"] . " ETH" . "\r\n"  . $event["userId"];
+                                "ยอดที่ยังไม่ยืนยัน : " . $data1["immature_earning"] . " ETH" . "\r\n"  . $event['source']['userId'];
 
 			// Get replyToken
 			$replyToken = $event['replyToken'];
