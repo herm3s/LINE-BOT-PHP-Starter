@@ -6,13 +6,10 @@ $proxy = 'velodrome.usefixie.com:80';
 $proxyauth = 'fixie:bfhX5Zm0ZC3iu84';
 $access_token = 'r0AE+qmwBHCFStfXuZIaO8HzNHnF2eJ3O4zOQIzzAqJ1nmEV1XJXnmbP++ei7yRQBujrR48im+iuMUD7kGyOagWaDhQwq2TIuOqR2UIW+L6EoSHC2VGxAFnm4syPBpDhWitZM0FSe249Z1EN3xxqMgdB04t89/1O/w1cDnyilFU=';
 
-use LINE-BOT-PHP-Starter/LINEBot/;
-use LINE-BOT-PHP-Starter/LINEBot/HTTPClient;
 
 
-$bot = new \LINE-BOT-PHP-Starter\LINEBot(new CurlHTTPClient('r0AE+qmwBHCFStfXuZIaO8HzNHnF2eJ3O4zOQIzzAqJ1nmEV1XJXnmbP++ei7yRQBujrR48im+iuMUD7kGyOagWaDhQwq2TIuOqR2UIW+L6EoSHC2VGxAFnm4syPBpDhWitZM0FSe249Z1EN3xxqMgdB04t89/1O/w1cDnyilFU='), [
-    'channelSecret' => '9f56daa9d7e46e9b82d2081fce3a6dd1'
-]);
+
+
 
 
 
@@ -69,9 +66,9 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			
-			$uprofile = $bot->getProfile('U127bc358c8b192a31d4be78f8a6d902a');
 			
-			$text = $uprofile . "\r\n" . "แชร์ครั้งล่าสุด : " . $datetime [0] . " " .$datetime [1] . " " . $datetime [2] . " " . $datetime [3] . " " . date('h:i:s', $endTime) .  "\r\n" .
+			
+			$text = "\r\n" . "แชร์ครั้งล่าสุด : " . $datetime [0] . " " .$datetime [1] . " " . $datetime [2] . " " . $datetime [3] . " " . date('h:i:s', $endTime) .  "\r\n" .
                                 "ยอด ETH : " . $data1["wallet_balance"] . " ETH" . "\r\n" .
                                 "คิดเป็นเงินบาท : " . $total . " THB" . "\r\n" .
                                 "1 ETH เท่ากับ : " . $data["THB"] . " THB" . "\r\n" .
