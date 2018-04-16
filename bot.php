@@ -84,14 +84,14 @@ if (!is_null($events['events'])) {
 			
 			// Build message to reply back
 			$messages = [
-				//'type' => 'text',
-				//'text' => $text ,
+				'type' => 'text',
+				'text' => $text ,
 				//'type' => 'video',
 				//'video' => $video
 				
-				  "type": "image",
-                                  "originalContentUrl": "https://image.ibb.co/cZ1NSS/test.jpg",
-                                  "previewImageUrl": "https://thumb.ibb.co/dLK97S/test.jpg"
+				//  "type": "image",
+                                //  "originalContentUrl": "https://image.ibb.co/cZ1NSS/test.jpg",
+                                //  "previewImageUrl": "https://thumb.ibb.co/dLK97S/test.jpg"
 				
 				
 			];
