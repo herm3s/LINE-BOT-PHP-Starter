@@ -80,7 +80,7 @@ if (!is_null($events['events'])) {
 				"วันคืนทุน : " . $roi . " วัน" . "\r\n" .	
                                 "Error Status : " . $data1["error"] . "\r\n" .
                                 "ยอดที่ยังไม่ยืนยัน : " . $data1["immature_earning"] . " ETH" . "\r\n" .	
-				//"Online: " . $data1["workers"]["1070Inno"]["alive"]? 'Online: true' : 'Online: false'  ;
+				"Online: " . $data1["workers"]["1070Inno"]["alive"]  .
 				"\r\n" ."hashrate: " . $data1["workers"]["1070Inno"]["hashrate"]  . "\r\n" .
 				"Update ล่าสุด(วินาที): " . $data1["workers"]["1070Inno"]["second_since_submit"] . "\r\n" .
 				"แรงขุดต่ำกว่า 60%: " . $data1["workers"]["1070Inno"]["hashrate_below_threshold"] . "\r\n"	;
