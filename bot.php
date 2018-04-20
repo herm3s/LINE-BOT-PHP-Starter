@@ -83,15 +83,15 @@ if (!is_null($events['events'])) {
                         "ยอด ETH : " . $data1["wallet_balance"] . " ETH" . "\r\n" .
                         "คิดเป็นเงินบาท : " . $total . " THB" . "\r\n" .
             		"1 ETH เท่ากับ : " . $data["THB"] . " THB" . "\r\n" .
-          		"ยอดขุดใน 24 ชั่วโมง : " . $data1["earning_24_hours"] . " ETH" . "\r\n" .			
-                    	"ยอดขุดใน 24 ชั่วโมง THB : " . $thbperday . " ETH(หักค่าไฟแล้ว 70 บาท)" . "\r\n" .
-			"วันคืนทุน : " . $roi . " วัน" . "\r\n".					
-            		"Error : " . $data1["error"] . "\r\n" .
-			"ยอดที่ยังไม่ยืนยัน : " . $data1["immature_earning"] . " ETH" . "\r\n"  . $event['source']['userId'] .
-			"Online: " . $data1["workers"]["1070Inno"]["alive"]? 'Online: true' : 'Online: false'  .
-            		"\r\n" ."hashrate: " . $data1["workers"]["1070Inno"]["hashrate"]  . "\r\n" .
-            		"second_since_submit: " . $data1["workers"]["1070Inno"]["second_since_submit"] . "\r\n" .
-                        "แรงขุดต่ำกว่า 60%: " . $data1["workers"]["1070Inno"]["hashrate_below_threshold"] . "\r\n"	;
+          		"ยอดขุดใน 24 ชั่วโมง : " . $data1["earning_24_hours"] . " ETH" . "\r\n" ;			
+                    	//"ยอดขุดใน 24 ชั่วโมง THB : " . $thbperday . " ETH(หักค่าไฟแล้ว 70 บาท)" . "\r\n" .
+			//"วันคืนทุน : " . $roi . " วัน" . "\r\n".					
+            		//"Error : " . $data1["error"] . "\r\n" .
+			//"ยอดที่ยังไม่ยืนยัน : " . $data1["immature_earning"] . " ETH" . "\r\n"  . $event['source']['userId'] .
+			//"Online: " . $data1["workers"]["1070Inno"]["alive"]? 'Online: true' : 'Online: false'  .
+            		//"\r\n" ."hashrate: " . $data1["workers"]["1070Inno"]["hashrate"]  . "\r\n" .
+            		//"second_since_submit: " . $data1["workers"]["1070Inno"]["second_since_submit"] . "\r\n" .
+                      //  "แรงขุดต่ำกว่า 60%: " . $data1["workers"]["1070Inno"]["hashrate_below_threshold"] . "\r\n"	;
 			
 			
 			// Get replyToken
