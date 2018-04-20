@@ -90,11 +90,10 @@ if (!is_null($events['events'])) {
 			"ยอดที่ยังไม่ยืนยัน : " . $data1["immature_earning"] . " ETH" . "\r\n"  . $event['source']['userId'] .
 			"Online: " . $data1["workers"]["1070Inno"]["alive"]? 'Online: true' : 'Online: false'  .
             		"\r\n" ."hashrate: " . $data1["workers"]["1070Inno"]["hashrate"]  . "\r\n" .
-            		"second_since_submit: " . $data1["workers"]["1070Inno"]["second_since_submit"]  . "\r\n" .
-                        "แรงขุดต่ำกว่า 60%: " . $data1["workers"]["1070Inno"]["hashrate_below_threshold"]. "\r\n"	;
+            		"second_since_submit: " . $data1["workers"]["1070Inno"]["second_since_submit"] . "\r\n" .
+                        "แรงขุดต่ำกว่า 60%: " . $data1["workers"]["1070Inno"]["hashrate_below_threshold"] . "\r\n"	;
 			
 			
-
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
