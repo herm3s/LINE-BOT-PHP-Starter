@@ -22,7 +22,8 @@ $events = json_decode($content, true);
 //header('Content-Type: text/html; charset=utf-8');
 
 
-$url1="http://dwarfpool.com/eth/api?wallet=0xE058B32A21b8C3B5BBfba621B4c94eC834e4BA9e&email=jason_bomb@me.com";
+//$url1="http://dwarfpool.com/eth/api?wallet=0xE058B32A21b8C3B5BBfba621B4c94eC834e4BA9e&email=jason_bomb@me.com";
+$url1="http://dwarfpool.com/eth/api?wallet=0xE058B32A21b8C3B5BBfba621B4c94eC834e4BA9e&email=eth@example.com";
 
 $ch1 = curl_init();
 // Disable SSL verification
@@ -56,6 +57,8 @@ $balance = $data1["wallet_balance"];
 $thb_rate =  +$data["THB"] ;
 $total = +$balance * +$thb_rate;
 
+$thbperday = +$thb_rate * + $data1["earning_24_hours"] - 70;
+$roi = ( 130000 - $total )/ $thbperday;
 
 
 // Validate parsed JSON data
@@ -68,13 +71,29 @@ if (!is_null($events['events'])) {
 			
 			
 			
-			$text = "\r\n" . "แชร์ครั้งล่าสุด : " . $datetime [0] . " " .$datetime [1] . " " . $datetime [2] . " " . $datetime [3] . " " . date('h:i:s', $endTime) .  "\r\n" .
-                                "ยอด ETH : " . $data1["wallet_balance"] . " ETH" . "\r\n" .
-                                "คิดเป็นเงินบาท : " . $total . " THB" . "\r\n" .
-                                "1 ETH เท่ากับ : " . $data["THB"] . " THB" . "\r\n" .
-                                "ยอดขุดใน 24 ชั่วโมง : " . $data1["earning_24_hours"] . " ETH" . "\r\n" .
-                                "Error Status : " . $data1["error_code"] . "\r\n" .
-                                "ยอดที่ยังไม่ยืนยัน : " . $data1["immature_earning"] . " ETH" . "\r\n"  . $event['source']['userId'];
+			//$text = "\r\n" . "แชร์ครั้งล่าสุด : " . $datetime [0] . " " .$datetime [1] . " " . $datetime [2] . " " . $datetime [3] . " " . date('h:i:s', $endTime) .  "\r\n" .
+                        //        "ยอด ETH : " . $data1["wallet_balance"] . " ETH" . "\r\n" .
+                        //        "คิดเป็นเงินบาท : " . $total . " THB" . "\r\n" .
+                        //        "1 ETH เท่ากับ : " . $data["THB"] . " THB" . "\r\n" .
+                        //        "ยอดขุดใน 24 ชั่วโมง : " . $data1["earning_24_hours"] . " ETH" . "\r\n" .
+                        //        "Error Status : " . $data1["error_code"] . "\r\n" .
+                        //        "ยอดที่ยังไม่ยืนยัน : " . $data1["immature_earning"] . " ETH" . "\r\n"  . $event['source']['userId'];
+			
+		$text = "\r\n" . "แชร์ครั้งล่าสุด : " . $datetime [0] . " " .$datetime [1] . " " . $datetime [2] . " " . $datetime [3] . " " . date('h:i:s', $endTime) .  "\r\n" .
+                        "ยอด ETH : " . $data1["wallet_balance"] . " ETH" . "\r\n" .
+                        "คิดเป็นเงินบาท : " . $total . " THB" . "\r\n" .
+            		"1 ETH เท่ากับ : " . $data["THB"] . " THB" . "\r\n" .
+          		"ยอดขุดใน 24 ชั่วโมง : " . $data1["earning_24_hours"] . " ETH" . "\r\n" .			
+                    	"ยอดขุดใน 24 ชั่วโมง THB : " . $thbperday . " ETH(หักค่าไฟแล้ว 70 บาท)" . "\r\n" .
+			"วันคืนทุน : " . $roi . " วัน" . "\r\n".					
+            		"Error : " . $data1["error"] . "\r\n" .
+			"ยอดที่ยังไม่ยืนยัน : " . $data1["immature_earning"] . " ETH" . "\r\n"  . $event['source']['userId'] .
+			"Online: " . $data1["workers"]["1070Inno"]["alive"]? 'Online: true' : 'Online: false'  .
+            		"\r\n" ."hashrate: " . $data1["workers"]["1070Inno"]["hashrate"]  . "\r\n" .
+            		"second_since_submit: " . $data1["workers"]["1070Inno"]["second_since_submit"]  . "\r\n" .
+                        "แรงขุดต่ำกว่า 60%: " . $data1["workers"]["1070Inno"]["hashrate_below_threshold"]. "\r\n"	;
+			
+			
 
 			// Get replyToken
 			$replyToken = $event['replyToken'];
