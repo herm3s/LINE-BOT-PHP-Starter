@@ -161,7 +161,30 @@ if(!is_null($events)){
                         )
                     );
                     break;   	
-						
+					
+					case "menu":
+
+$imageMapUrl = 'https://image.ibb.co/nC9uB7/btcmap1040.jpg';
+$replyData = new ImagemapMessageBuilder(
+    $imageMapUrl, // ส่วนของการกำหนด url รูป
+    'This is Imagemap', // ส่วนของการกำหนดหัวเรื่องว่าเกี่ยวกับอะไร
+    new BaseSizeBuilder(1040,1040), // กำหนดขนาดของรูป (สูง,กว้าง)
+    array(
+        //new ImagemapMessageActionBuilder(
+		new ImagemapUriActionBuilder(
+            'https://shrouded-castle-11196.herokuapp.com/bot.php',
+            new AreaBuilder(0,0,1040,609)
+            ),
+		new ImagemapUriActionBuilder(
+            'https://dwarfpool.com/eth/address?wallet=0xE058B32A21b8C3B5BBfba621B4c94eC834e4BA9e',
+            new AreaBuilder(4,612,535,428)
+            ),
+        new ImagemapUriActionBuilder(
+            'https://coinmarketcap.com/',
+            new AreaBuilder(547,617,493,423)
+            )
+    ));
+                    break;  					
 						
 						
                     default:
